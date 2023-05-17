@@ -1,0 +1,24 @@
+// Comandos
+// npx prisma migrate dev = ler o schema e detecta alterações
+// * migration = sistema de versionamento do db
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// model serve para definir um modelo de tabela pelo
+// fato do Prisma trabalhar com mais de um tipo de db
+model User {
+  // Universally Unique Identifier (uuid) = gera um id único universal
+  // @id = key primária
+  // @default = gera por padrão
+
+  // campo Tipo
+  id   String @id @default(uuid())
+  name String
+}
